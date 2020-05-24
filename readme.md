@@ -27,5 +27,5 @@ Summary will look like this:
 
 [![Latest release](https://img.shields.io/github/release/vppillai/MPLABXMemoryAnalyzer.svg)](https://github.com/vppillai/MPLABXMemoryAnalyzer/releases/latest)
 [![Latest release date](https://img.shields.io/github/release-date/vppillai/MPLABXMemoryAnalyzer.svg)](https://github.com/vppillai/MPLABXMemoryAnalyzer/releases/latest)
-[![Commit activity](https://img.shields.io/github/commit-activity/y/vppillai/MPLABXMemoryAnalyzer.svg)](https://github.com/vppillai/MPLABXMemoryAnalyzer/graphs/commit-activity)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/vppillai/MPLABXMemoryAnalyzer)
 [![Contributors](https://img.shields.io/github/contributors-anon/vppillai/MPLABXMemoryAnalyzer.svg)]()
