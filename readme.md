@@ -2,6 +2,8 @@
 
 A tool to generate modular memory usage summry of MPLABX based PIC32 projects.
 
+Details are in my [blog](https://embeddedinn.xyz/articles/tutorial/analyzing-size-of-ELF-sections-and-symbols/).
+
 # Usage
 
   - Make sure that compiler tools are added to system PATH (e.g. _C:\Program Files\Microchip\xc32\v2.40\bin_)
