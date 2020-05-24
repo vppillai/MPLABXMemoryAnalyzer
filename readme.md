@@ -23,7 +23,7 @@ Results will be generated in the build output folder (_project.x\dist\project\cu
 
 Summary will look like this:
 
-![](docs/images/report.jpeg)
+![](docs/images/report.png)
 
 [![Latest release](https://img.shields.io/github/release/vppillai/MPLABXMemoryAnalyzer.svg)](https://github.com/vppillai/MPLABXMemoryAnalyzer/releases/latest)
 [![Latest release date](https://img.shields.io/github/release-date/vppillai/MPLABXMemoryAnalyzer.svg)](https://github.com/vppillai/MPLABXMemoryAnalyzer/releases/latest)
