@@ -4,11 +4,12 @@ A tool to generate modular memory usage summry of MPLABX based PIC32 projects.
 
 # Usage
 
-- Make sure that compiler tools are added to system PATH (e.g. _C:\Program Files\Microchip\xc32\v2.40\bin_)
+  - Make sure that compiler tools are added to system PATH (e.g. _C:\Program Files\Microchip\xc32\v2.40\bin_)
   - Make sure that you have python 3 installed in your system.
+    - No special pyhton modules are required.
   - unzip/clone tool to anywhere in the system.
   - execute with: python mapfileParse.py <_path to project.x_>
-- report will be geenrated in the build output folder (_project.x\dist\project\curiosity_)
+  - report will be geenrated in the build output folder (_project.x\dist\project\curiosity_)
 
 # Results
 
