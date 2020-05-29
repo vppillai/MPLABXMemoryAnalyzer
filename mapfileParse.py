@@ -9,6 +9,7 @@ import operator
 import pprint
 import sys
 import time
+import argparse
 
 # -------------------------------------------------------------------------------------------
 # Globals to store common variables
@@ -20,6 +21,7 @@ outputFolder = ""
 mapFilePath = ""
 elfFilePath = ""
 aMapPath = ""
+configName = ""
 
 compDefinition = {
     "Wifi Driver": ["/driver/wifi/"],
@@ -58,9 +60,17 @@ def setPaths(inputPath):
     aMapPath = os.path.join(os.path.dirname(os.path.abspath(
         inspect.getfile(inspect.currentframe()))), "amap.exe")
 
+    global configName
+    if not configName:
+        configName = projectName
+
     global outputFolder, buildMode
     outputFolder = os.path.join(
-        projectPath, f"dist\\{projectName}\\{buildMode}")
+        projectPath, f"dist\\{configName}\\{buildMode}")
+
+    if not os.path.exists(outputFolder):
+        print("Output Folder does not exist. Please check configuration Name")
+        exit(-2)
 
     global mapFilePath
     mapFilePath = os.path.join(
@@ -78,7 +88,7 @@ def setPaths(inputPath):
 
 def checkTools():
     global elfFilePath
-    command = f"xc32-size.exe {elfFilePath}"
+    command = f"xc32-addr2line.exe -v"
     status, result = subprocess.getstatusoutput(
         shlex.split(command, posix=False))
     if status:
@@ -394,6 +404,9 @@ def cleanupMapFile(fileName):
 
             cleanFile.write(lineItem)
 
+# -------------------------------------------------------------------------------------------
+# main execution flow
+
 
 def main(projectPath):
     global cleanFileExt, mapFilePath, outputFolder
@@ -434,13 +447,30 @@ def main(projectPath):
     print("See results at :", outputFolder)
 
 
-if __name__ == "__main__":
-    if 2 != len(sys.argv):
-        print("    Usage: Enter project path as argument until .X")
+# -------------------------------------------------------------------------------------------
+# parse input arguments
+def parseArguments():
+    global configName, projectPath
+    parser = argparse.ArgumentParser(
+        description="Tool to parse map file and provide component-wise memory usage of an embedded project")
+    parser.add_argument("-c", "--config",
+                        help="specify a configuration name", metavar="<project config>", type=str)
+    parser.add_argument('prjPathArg', nargs=1,
+                        metavar="<project path to .X>")
+    args = parser.parse_args()
+    if (args.config):
+        configName = args.config
+    if not args.prjPathArg:
+        parser.error("please provide a project path to .X")
         exit(-1)
     else:
-        # r"C:\Microchip\Bitbucket_pic32mzw1\wireless\apps\paho_mqtt_client\firmware\pic32mz_w1_curiosity.X"
-        projectPath = sys.argv[1]
+        projectPath = args.prjPathArg[0]
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parseArguments()
+
     start = time.time()
     main(projectPath)
     print(f"Process completed in : {time.time() - start}s")
