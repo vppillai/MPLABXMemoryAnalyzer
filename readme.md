@@ -10,8 +10,21 @@ Details are in my [blog](https://embeddedinn.xyz/articles/tutorial/analyzing-siz
   - Make sure that you have python 3 installed in your system.
     - No special pyhton modules are required.
   - unzip/clone tool to anywhere in the system.
-  - execute with: python mapfileParse.py <_path to project.x_>
   - report will be geenrated in the build output folder (_project.x\dist\project\curiosity_)
+
+```bash
+usage: mapfileParse.py [-h] [-c <project config>] <project path to .X>
+
+Tool to parse map file and provide component-wise memory usage of an embedded project
+
+positional arguments:
+  <project path to .X>
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c <project config>, --config <project config>
+                        specify a configuration name
+```
 
 # Results
 
