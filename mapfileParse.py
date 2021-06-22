@@ -390,10 +390,15 @@ def cleanupMapFile(fileName):
 #                gnu_attributes_skipNext=False
 #                continue
 
-            # This item comes in 2 lines
+            # This item comes in 2 lines  (e.g. .config_BFC55F8C)
             if (re.search(r"^[ ]*\.config_[A-Z0-9]{8}$", lineItem)):
                 config_skipNext = True
                 continue
+            #e.g.                 0x00000000bfc55f8c                __config_BFC55F8C
+            if (re.search(r"^.*\_\_config_[A-Z0-9]{8}$", lineItem)):
+                continue
+
+
             if config_skipNext:
                 config_skipNext = False
                 continue
